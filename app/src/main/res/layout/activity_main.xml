@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <TextView
+        android:text="Welcome, "
+        android:textColor="#3f3f3f"
+        android:textSize="50px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/welcome"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/photoprofile"
+        android:layout_width="131dp"
+        android:layout_height="118dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/ic_account_circle_black_24dp"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Iniciar Sesión"
+        android:textSize="20sp"
+        android:textColor="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/callGraph"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#00a1f1"
+        android:layout_gravity="right"
+        android:layout_marginRight="40dp"
+        android:hint="Call Microsoft Graph"
+        android:text="Siguiente"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:text="Getting Graph Data..."
+        android:textColor="#3f3f3f"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/graphData"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+
+        <Button
+            android:text="Sign Out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textColor="#FFFFFF"
+            android:background="#00a1f1"
+            android:textAllCaps="false"
+            android:id="@+id/clearCache"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</LinearLayout>
