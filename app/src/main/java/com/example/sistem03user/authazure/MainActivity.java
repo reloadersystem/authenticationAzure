@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -164,9 +165,15 @@ public class MainActivity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 //headers.put("Authorization", "Bearer " + authResult.getAccessToken());
-                headers.put("Content-Type", "image/jpeg");
+                //headers.put("Content-Type", "image/jpeg");
 
+                headers.put("Content-Type", "application/json");
+                String creds = String.format("%s:%s","username","password");
+                String auth = "Basic " + Base64.encodeToString(creds.getBytes(), Base64.DEFAULT);
+                headers.put("Authorization", auth);
                 return headers;
+
+
             }
 
         };
