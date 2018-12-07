@@ -164,21 +164,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
-                //headers.put("Authorization", "Bearer " + authResult.getAccessToken());
-                //headers.put("Content-Type", "image/jpeg");
-
+                headers.put("Authorization", "Bearer " + authResult.getAccessToken());
                 headers.put("Content-Type", "application/json");
-                String creds = String.format("%s:%s","username","password");
-                String auth = "Basic " + Base64.encodeToString(creds.getBytes(), Base64.DEFAULT);
-                headers.put("Authorization", auth);
                 return headers;
+
 
 
             }
 
         };
 
-        Log.d(TAG, "Adding HTTP GET to Queue PHOTO, Request: " + request.toString() + " photorequest "+ photorequest.toString());
+        Log.d(TAG, "Adding HTTP GET to Queue PHOTO, Request: photorequest "+ photorequest.toString());
 
         photorequest.setRetryPolicy(new DefaultRetryPolicy(
                 3000,
@@ -282,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Authorization", "Bearer " + authResult.getAccessToken());
+
                 return headers;
             }
         };
