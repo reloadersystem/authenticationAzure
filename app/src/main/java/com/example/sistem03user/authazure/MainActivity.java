@@ -165,16 +165,20 @@ public class MainActivity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Authorization", "Bearer " + authResult.getAccessToken());
-                headers.put("Content-Type", "application/json");
-                return headers;
+                // headers.put("Content-Type", "image/jpeg");
 
+                headers.put("Content-Type", "application/json");
+//                    String creds = String.format("%s:%s","username","password");
+//                    String auth = "Basic " + Base64.encodeToString(creds.getBytes(), Base64.DEFAULT);
+//                    headers.put("Authorization", auth);
+                return headers;
 
 
             }
 
         };
 
-        Log.d(TAG, "Adding HTTP GET to Queue PHOTO, Request: photorequest "+ photorequest.toString());
+        Log.d(TAG, "Adding HTTP GET to Queue PHOTO, Request: "+  "RESPUESTA-FOTOS"+ photorequest.toString());
 
         photorequest.setRetryPolicy(new DefaultRetryPolicy(
                 3000,
@@ -227,7 +231,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "Starting volley request to graph");
 
         /* Make sure we have a token to send to graph */
-        if (authResult.getAccessToken() == null) {return;}
+        if (authResult.getAccessToken() == null) {
+            return;
+        }
 
         RequestQueue queue = Volley.newRequestQueue(this);
         JSONObject parameters = new JSONObject();
@@ -237,6 +243,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.d(TAG, "Failed to put parameters: " + e.toString());
         }
+
+
         request = new JsonObjectRequest(Request.Method.GET, MSGRAPH_URL,
                 parameters,new Response.Listener<JSONObject>() {
             @Override
@@ -259,6 +267,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+//                    a = "displayName: " + response.get("displayName");
+//                    b = "jobTitle: " + response.get("jobTitle");
+//                    c = "givenName: " + response.get("givenName");
+//                    d = "mail: "+ response.get("mail");
+//                    e ="officeLocation: "+ response.get("officeLocation");
+//                    f ="surname: " + response.get("surname");
+//                    g ="mobilePhone: "+ response.get("mobilePhone");
+//                    h ="id: "+ response.get("id");
+
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -272,13 +292,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, "Error: " + error.toString());
-            }
+            }//fin
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Authorization", "Bearer " + authResult.getAccessToken());
-
                 return headers;
             }
         };
